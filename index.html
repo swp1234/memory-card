@@ -68,6 +68,10 @@
     <link rel="apple-touch-icon" href="icon-192.svg">
 
     <link rel="stylesheet" href="css/style.css">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/style.css" as="style">
+    <!-- Prefetch app scripts -->
+    <link rel="prefetch" href="js/app.js">
 </head>
 <body>
     <!-- Skip to main content link for keyboard users -->
@@ -346,8 +350,8 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/i18n.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/i18n.js" defer></script>
+    <script src="js/app.js" defer></script>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8GSWM40TV"></script>
