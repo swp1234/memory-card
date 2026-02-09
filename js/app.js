@@ -171,16 +171,19 @@ class MemoryCardGame {
     }
 
     generateCards() {
-        // Improved difficulty curve: keep early stages consistent, increase later
+        // Improved difficulty curve: very gentle progression
         let config = this.gridConfigs[this.selectedDifficulty];
 
-        // Override difficulty progression: same grid for first 5 stages
-        if (this.currentStage <= 5) {
-            config = this.gridConfigs['easy']; // Always use easy config (3x4) for first 5 stages
-        } else if (this.currentStage <= 10) {
-            config = this.gridConfigs['normal']; // Use normal (4x4) for stages 6-10
+        // Progressive difficulty: extend easy phase to 8 stages
+        if (this.currentStage <= 8) {
+            // Stages 1-8: Keep easy (3x4) for solid foundation
+            config = this.gridConfigs['easy'];
+        } else if (this.currentStage <= 15) {
+            // Stages 9-15: Gradually increase to normal (4x4)
+            config = this.gridConfigs['normal'];
         } else {
-            config = this.gridConfigs['hard']; // Use hard (5x4) for stages 11+
+            // Stages 16+: Hard mode (5x4)
+            config = this.gridConfigs['hard'];
         }
 
         const totalCards = config.rows * config.cols;
