@@ -94,6 +94,8 @@
                     <button id="pause-btn" class="header-btn pause-btn" title="Pause game" aria-label="Pause game">
                         <span id="pause-icon">⏸️</span>
                     </button>
+                    <!-- Sound Toggle -->
+                    <button class="sound-toggle" id="sound-toggle" onclick="if(window.sfx)window.sfx.init();const enabled=window.sfx?window.sfx.toggle():false;this.textContent=enabled?'🔊':'🔇';" aria-label="Toggle Sound" title="Sound">🔊</button>
                     <div class="language-selector">
                         <button id="lang-toggle" class="lang-toggle" title="Change language">
                             <span>🌐</span>
@@ -351,6 +353,7 @@
 
     <!-- Scripts -->
     <script src="js/i18n.js" defer></script>
+    <script src="js/sound-engine.js" defer></script>
     <script src="js/app.js" defer></script>
 
     <!-- Google Analytics -->

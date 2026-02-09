@@ -486,50 +486,28 @@ class MemoryCardGame {
     }
 
     playSound(soundType) {
-        // Web Audio API for sound effects
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        if (!window.sfx) return;
 
-        if (soundType === 'flip') {
-            this.playTone(audioContext, 600, 0.05);
-        } else if (soundType === 'match') {
-            this.playTone(audioContext, 800, 0.1);
-            setTimeout(() => this.playTone(audioContext, 1000, 0.1), 100);
-        } else if (soundType === 'error') {
-            this.playTone(audioContext, 300, 0.08);
-            setTimeout(() => this.playTone(audioContext, 200, 0.08), 100);
-        } else if (soundType === 'clear') {
-            this.playTone(audioContext, 800, 0.1);
-            setTimeout(() => this.playTone(audioContext, 900, 0.1), 100);
-            setTimeout(() => this.playTone(audioContext, 1000, 0.1), 200);
-        } else if (soundType === 'record') {
-            this.playTone(audioContext, 1000, 0.1);
-            setTimeout(() => this.playTone(audioContext, 1200, 0.1), 150);
-        } else if (soundType === 'pause') {
-            this.playTone(audioContext, 700, 0.08);
-        } else if (soundType === 'resume') {
-            this.playTone(audioContext, 700, 0.08);
-            setTimeout(() => this.playTone(audioContext, 700, 0.08), 100);
+        // Initialize sound engine on first call
+        if (!window.sfx.initialized) {
+            window.sfx.init();
         }
-    }
 
-    playTone(audioContext, frequency, duration) {
-        try {
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-
-            oscillator.frequency.value = frequency;
-            oscillator.type = 'sine';
-
-            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
-
-            oscillator.start(audioContext.currentTime);
-            oscillator.stop(audioContext.currentTime + duration);
-        } catch (e) {
-            // Fallback if audio not supported
+        // Use sound engine for effects
+        if (soundType === 'flip') {
+            window.sfx.flip();
+        } else if (soundType === 'match') {
+            window.sfx.match();
+        } else if (soundType === 'error') {
+            window.sfx.error();
+        } else if (soundType === 'clear') {
+            window.sfx.stageClear();
+        } else if (soundType === 'record') {
+            window.sfx.record();
+        } else if (soundType === 'pause') {
+            window.sfx.pause();
+        } else if (soundType === 'resume') {
+            window.sfx.resume();
         }
     }
 }
