@@ -1331,3 +1331,14 @@ select:focus-visible {
     scrollbar-color: var(--primary-color, #3b82f6) var(--bg-dark, #f1f5f9);
     scrollbar-width: thin;
 }
+
+/* Selection Color */
+::selection {
+    background: #e67e22;
+    color: white;
+}
+
+::-moz-selection {
+    background: #e67e22;
+    color: white;
+}
