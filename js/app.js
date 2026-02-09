@@ -38,6 +38,9 @@ class MemoryCardGame {
         this.matched = [];
         this.canFlip = false;
 
+        // Leaderboard system
+        this.leaderboard = new LeaderboardManager('memory-card', 10);
+
         this.init();
     }
 
@@ -378,13 +381,22 @@ class MemoryCardGame {
         const stagesCleared = this.currentStage - 1;
         this.updateBestScore();
 
+        // Add score to leaderboard
+        const leaderboardResult = this.leaderboard.addScore(this.score, {
+            stage: stagesCleared,
+            combo: this.maxCombo,
+            time: this.time,
+            difficulty: this.selectedDifficulty
+        });
+
         // Show game over screen
         document.getElementById('final-stages').textContent = stagesCleared;
         document.getElementById('final-score').textContent = this.score;
         document.getElementById('best-score-display').textContent = this.bestScore;
 
         // Check for new record
-        if (this.score > this.bestScore) {
+        const isNewRecord = leaderboardResult.isNewRecord;
+        if (isNewRecord) {
             document.getElementById('record-check').style.display = 'block';
             this.bestScore = this.score;
             localStorage.setItem('memoryCardBestScore', this.bestScore);
@@ -392,6 +404,9 @@ class MemoryCardGame {
         } else {
             document.getElementById('record-check').style.display = 'none';
         }
+
+        // Display leaderboard
+        this.displayLeaderboard(leaderboardResult);
 
         this.showScreen('game-over-screen');
     }
