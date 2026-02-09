@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "Flip de Cartão de Memória",
+    "loading": "Carregando...",
+    "description": "Jogo clássico de memória - vire cartões para combinar pares"
+  },
+  "game": {
+    "welcome": "Bem-vindo ao Flip de Cartão de Memória!",
+    "welcomeDesc": "Vire os cartões para combinar pares. Acumule combos para mais pontos!",
+    "selectTheme": "Selecione Tema",
+    "selectDifficulty": "Selecione Dificuldade",
+    "easy": "Fácil (4x3)",
+    "normal": "Normal (4x4)",
+    "hard": "Difícil (5x4)",
+    "stage": "Nível",
+    "score": "Pontuação",
+    "combo": "Combo",
+    "time": "Tempo",
+    "attempts": "Tentativas",
+    "stageNumber": "Nível",
+    "stageClear": "Nível Completo!",
+    "timeBonus": "Bônus de Tempo",
+    "comboBonus": "Bônus de Combo",
+    "totalScore": "Pontuação Total",
+    "paused": "Pausado",
+    "gameOver": "Fim de Jogo!",
+    "stagesCleared": "Níveis Completados",
+    "finalScore": "Pontuação Final",
+    "bestScore": "Melhor Pontuação",
+    "newRecord": "Novo Recorde!",
+    "back": "Início de DopaBrain"
+  },
+  "theme": {
+    "emoji": "Emoji",
+    "animal": "Animal",
+    "fruit": "Fruta",
+    "flag": "Bandeira"
+  },
+  "button": {
+    "start": "Iniciar Jogo",
+    "resume": "Retomar",
+    "quit": "Sair",
+    "nextStage": "Próximo Nível",
+    "playAgain": "Jogar Novamente",
+    "share": "Compartilhar"
+  },
+  "recommendations": {
+    "title": "Experimente Outros Jogos"
+  },
+  "notifications": {
+    "newCombo": "Combo! Continua!",
+    "stageCleared": "Nível completo!",
+    "gamePaused": "Jogo pausado",
+    "gameResumed": "Jogo retomado"
+  }
+}

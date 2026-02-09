@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "Flip Kartu Memori",
+    "loading": "Memuat...",
+    "description": "Permainan memori klasik - balikkan kartu untuk mencocokkan pasangan"
+  },
+  "game": {
+    "welcome": "Selamat datang di Flip Kartu Memori!",
+    "welcomeDesc": "Balikkan kartu untuk mencocokkan pasangan. Bangun kombo untuk poin lebih banyak!",
+    "selectTheme": "Pilih Tema",
+    "selectDifficulty": "Pilih Kesulitan",
+    "easy": "Mudah (4x3)",
+    "normal": "Normal (4x4)",
+    "hard": "Sulit (5x4)",
+    "stage": "Level",
+    "score": "Skor",
+    "combo": "Kombo",
+    "time": "Waktu",
+    "attempts": "Percobaan",
+    "stageNumber": "Level",
+    "stageClear": "Level Selesai!",
+    "timeBonus": "Bonus Waktu",
+    "comboBonus": "Bonus Kombo",
+    "totalScore": "Total Skor",
+    "paused": "Dijeda",
+    "gameOver": "Permainan Berakhir!",
+    "stagesCleared": "Level Selesai",
+    "finalScore": "Skor Akhir",
+    "bestScore": "Skor Terbaik",
+    "newRecord": "Rekor Baru!",
+    "back": "Rumah DopaBrain"
+  },
+  "theme": {
+    "emoji": "Emoji",
+    "animal": "Hewan",
+    "fruit": "Buah",
+    "flag": "Bendera"
+  },
+  "button": {
+    "start": "Mulai Permainan",
+    "resume": "Lanjutkan",
+    "quit": "Keluar",
+    "nextStage": "Level Berikutnya",
+    "playAgain": "Mainkan Lagi",
+    "share": "Bagikan"
+  },
+  "recommendations": {
+    "title": "Coba Permainan Lain"
+  },
+  "notifications": {
+    "newCombo": "Kombo! Lanjutkan!",
+    "stageCleared": "Level selesai!",
+    "gamePaused": "Permainan dijeda",
+    "gameResumed": "Permainan dilanjutkan"
+  }
+}

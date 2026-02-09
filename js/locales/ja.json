@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "メモリーカードフリップ",
+    "loading": "読み込み中...",
+    "description": "クラシックなメモリーゲーム - カードをめくってペアを合わせます"
+  },
+  "game": {
+    "welcome": "メモリーカードフリップへようこそ!",
+    "welcomeDesc": "カードをめくってペアを合わせてください。コンボを積み重ねてポイントを獲得!",
+    "selectTheme": "テーマを選択",
+    "selectDifficulty": "難易度を選択",
+    "easy": "簡単 (4x3)",
+    "normal": "普通 (4x4)",
+    "hard": "難しい (5x4)",
+    "stage": "ステージ",
+    "score": "スコア",
+    "combo": "コンボ",
+    "time": "時間",
+    "attempts": "試行",
+    "stageNumber": "ステージ",
+    "stageClear": "ステージクリア!",
+    "timeBonus": "タイムボーナス",
+    "comboBonus": "コンボボーナス",
+    "totalScore": "合計スコア",
+    "paused": "一時停止",
+    "gameOver": "ゲームオーバー!",
+    "stagesCleared": "クリアしたステージ",
+    "finalScore": "最終スコア",
+    "bestScore": "ベストスコア",
+    "newRecord": "新記録!",
+    "back": "DopaBrain ホーム"
+  },
+  "theme": {
+    "emoji": "絵文字",
+    "animal": "動物",
+    "fruit": "フルーツ",
+    "flag": "国旗"
+  },
+  "button": {
+    "start": "ゲーム開始",
+    "resume": "再開",
+    "quit": "終了",
+    "nextStage": "次のステージ",
+    "playAgain": "もう一度プレイ",
+    "share": "シェア"
+  },
+  "recommendations": {
+    "title": "他のゲームもお試しください"
+  },
+  "notifications": {
+    "newCombo": "コンボ!頑張ってください!",
+    "stageCleared": "ステージクリア!",
+    "gamePaused": "ゲームは一時停止されました",
+    "gameResumed": "ゲームが再開されました"
+  }
+}

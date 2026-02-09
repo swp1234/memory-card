@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="app.title">메모리 카드 플립 - Memory Card Flip</title>
+    <meta name="description" content="카드를 뒤집어서 짝을 맞추는 클래식 메모리 게임! 🎴 콤보 시스템과 다양한 테마로 더욱 재미있는 게임 경험을 즐기세요.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="keywords" content="메모리 게임, 카드 게임, 기억력 게임, 두뇌 게임, 무료 게임, 온라인 게임">
+    <meta name="theme-color" content="#e67e22">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="메모리 카드 플립 🎴 - 클래식 기억 게임">
+    <meta property="og:description" content="카드를 뒤집어 짝을 맞추고 콤보를 터트려! 다양한 테마와 난이도로 즐기는 중독성 높은 게임!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dopabrain.com/memory-card/">
+    <meta property="og:image" content="https://dopabrain.com/memory-card/icon-512.svg">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="ja_JP">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="메모리 카드 플립 🎴 - 클래식 기억 게임">
+    <meta name="twitter:description" content="카드를 뒤집어 짝을 맞추고 콤보를 터트려!">
+    <meta name="twitter:image" content="https://dopabrain.com/memory-card/icon-512.svg">
+    <meta name="twitter:site" content="@dopabrain">
+    <link rel="canonical" href="https://dopabrain.com/memory-card/">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "메모리 카드 플립",
+        "description": "카드를 뒤집어서 짝을 맞추는 클래식 메모리 게임. 콤보 시스템으로 더 많은 점수를 획득하세요!",
+        "applicationCategory": "GameApplication",
+        "url": "https://dopabrain.com/memory-card/",
+        "image": "https://dopabrain.com/memory-card/icon-512.svg",
+        "genre": "Puzzle",
+        "gamePlatform": "Web Browser",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+    }
+    </script>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icon-192.svg">
+    <link rel="apple-touch-icon" href="icon-192.svg">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-loader" id="app-loader">
+        <div class="loader-content">
+            <div class="loader-emoji">🎴</div>
+            <div class="loader-spinner"></div>
+            <div class="loader-text" data-i18n="app.loading">로딩 중...</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-top">
+                <h1 class="logo" data-i18n="app.title">Memory Card Flip</h1>
+                <div class="header-actions">
+                    <button id="pause-btn" class="header-btn pause-btn" title="Pause game" aria-label="Pause game">
+                        <span id="pause-icon">⏸️</span>
+                    </button>
+                    <div class="language-selector">
+                        <button id="lang-toggle" class="lang-toggle" title="Change language">
+                            <span>🌐</span>
+                        </button>
+                        <div id="lang-menu" class="lang-menu hidden">
+                            <button class="lang-option" data-lang="ko">🇰🇷 한국어</button>
+                            <button class="lang-option" data-lang="en">🇺🇸 English</button>
+                            <button class="lang-option" data-lang="zh">🇨🇳 中文</button>
+                            <button class="lang-option" data-lang="hi">🇮🇳 हिन्दी</button>
+                            <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
+                            <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
+                            <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+                            <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+                            <button class="lang-option" data-lang="id">🇮🇩 Indonesia</button>
+                            <button class="lang-option" data-lang="tr">🇹🇷 Türkçe</button>
+                            <button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
+                            <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-label" data-i18n="game.stage">스테이지</span>
+                    <span class="stat-value" id="stage-display">1</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label" data-i18n="game.score">점수</span>
+                    <span class="stat-value" id="score-display">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label" data-i18n="game.combo">콤보</span>
+                    <span class="stat-value combo-value" id="combo-display">0</span>
+                </div>
+            </div>
+
+            <!-- Game Info Bar -->
+            <div class="game-info-bar">
+                <div class="timer-display">
+                    <span class="timer-label" data-i18n="game.time">시간</span>
+                    <span class="timer-value" id="timer-display">0:00</span>
+                </div>
+                <div class="attempts-display">
+                    <span class="attempts-label" data-i18n="game.attempts">시도</span>
+                    <span class="attempts-value" id="attempts-display">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Top Ad -->
+        <div class="ad-container ad-top">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-3600813755953882"
+                data-ad-slot="1234567890"
+                data-ad-format="horizontal"
+                data-full-width-responsive="true"></ins>
+        </div>
+
+        <!-- Game Area -->
+        <main class="game-container">
+            <!-- Start Screen -->
+            <div id="start-screen" class="game-screen active">
+                <div class="start-content">
+                    <h2 class="start-title" data-i18n="game.welcome">메모리 카드 플립에 오신 것을 환영합니다!</h2>
+                    <p class="start-description" data-i18n="game.welcomeDesc">카드를 뒤집어서 짝을 맞추세요. 콤보를 쌓을수록 더 많은 점수를 얻습니다!</p>
+
+                    <!-- Theme Selector -->
+                    <div class="theme-selector">
+                        <h3 class="selector-label" data-i18n="game.selectTheme">테마 선택</h3>
+                        <div class="theme-buttons">
+                            <button class="theme-btn active" data-theme="emoji" title="Emoji theme">
+                                <span class="theme-icon">😊😎🤩</span>
+                                <span class="theme-name" data-i18n="theme.emoji">이모지</span>
+                            </button>
+                            <button class="theme-btn" data-theme="animal" title="Animal theme">
+                                <span class="theme-icon">🐶🐱🐭</span>
+                                <span class="theme-name" data-i18n="theme.animal">동물</span>
+                            </button>
+                            <button class="theme-btn" data-theme="fruit" title="Fruit theme">
+                                <span class="theme-icon">🍎🍊🍋</span>
+                                <span class="theme-name" data-i18n="theme.fruit">과일</span>
+                            </button>
+                            <button class="theme-btn" data-theme="flag" title="Flag theme">
+                                <span class="theme-icon">🇰🇷🇺🇸🇯🇵</span>
+                                <span class="theme-name" data-i18n="theme.flag">국기</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Difficulty Selector -->
+                    <div class="difficulty-selector">
+                        <h3 class="selector-label" data-i18n="game.selectDifficulty">난이도 선택</h3>
+                        <div class="difficulty-buttons">
+                            <button class="difficulty-btn active" data-difficulty="easy" title="Easy difficulty">
+                                <span class="difficulty-icon">⭐</span>
+                                <span class="difficulty-name" data-i18n="game.easy">쉬움 (4x3)</span>
+                            </button>
+                            <button class="difficulty-btn" data-difficulty="normal" title="Normal difficulty">
+                                <span class="difficulty-icon">⭐⭐</span>
+                                <span class="difficulty-name" data-i18n="game.normal">보통 (4x4)</span>
+                            </button>
+                            <button class="difficulty-btn" data-difficulty="hard" title="Hard difficulty">
+                                <span class="difficulty-icon">⭐⭐⭐</span>
+                                <span class="difficulty-name" data-i18n="game.hard">어려움 (5x4)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button id="start-btn" class="btn btn-primary btn-large" data-i18n="button.start">게임 시작</button>
+                </div>
+            </div>
+
+            <!-- Pause Screen -->
+            <div id="pause-screen" class="game-screen hidden">
+                <div class="pause-content">
+                    <h2 data-i18n="game.paused">일시 정지</h2>
+                    <div class="pause-stats">
+                        <div class="pause-stat">
+                            <span class="label" data-i18n="game.stage">스테이지</span>
+                            <span class="value" id="pause-stage">1</span>
+                        </div>
+                        <div class="pause-stat">
+                            <span class="label" data-i18n="game.score">점수</span>
+                            <span class="value" id="pause-score">0</span>
+                        </div>
+                        <div class="pause-stat">
+                            <span class="label" data-i18n="game.combo">콤보</span>
+                            <span class="value" id="pause-combo">0</span>
+                        </div>
+                    </div>
+                    <div class="pause-actions">
+                        <button id="resume-btn" class="btn btn-primary" data-i18n="button.resume">계속하기</button>
+                        <button id="quit-btn" class="btn btn-secondary" data-i18n="button.quit">나가기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Playing Screen -->
+            <div id="game-screen" class="game-screen hidden">
+                <div class="card-grid" id="card-grid"></div>
+            </div>
+
+            <!-- Stage Clear Screen -->
+            <div id="stage-clear-screen" class="game-screen hidden">
+                <div class="stage-clear-content">
+                    <h2 class="clear-title" data-i18n="game.stageClear">스테이지 클리어! 🎉</h2>
+                    <div class="clear-stats">
+                        <div class="clear-stat">
+                            <span class="label" data-i18n="game.stageNumber">스테이지</span>
+                            <span class="value" id="clear-stage">1</span>
+                        </div>
+                        <div class="clear-stat">
+                            <span class="label" data-i18n="game.timeBonus">시간 보너스</span>
+                            <span class="value bonus-value" id="time-bonus">+0</span>
+                        </div>
+                        <div class="clear-stat">
+                            <span class="label" data-i18n="game.comboBonus">콤보 보너스</span>
+                            <span class="value bonus-value" id="combo-bonus">+0</span>
+                        </div>
+                        <div class="clear-stat highlight">
+                            <span class="label" data-i18n="game.totalScore">총 점수</span>
+                            <span class="value" id="clear-score">0</span>
+                        </div>
+                    </div>
+                    <button id="next-stage-btn" class="btn btn-primary btn-large" data-i18n="button.nextStage">다음 스테이지</button>
+                </div>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div id="game-over-screen" class="game-screen hidden">
+                <div class="game-over-content">
+                    <h2 data-i18n="game.gameOver">게임 오버! 😢</h2>
+                    <div class="final-stats">
+                        <div class="final-stat">
+                            <span class="label" data-i18n="game.stagesCleared">클리어한 스테이지</span>
+                            <span class="value" id="final-stages">0</span>
+                        </div>
+                        <div class="final-stat">
+                            <span class="label" data-i18n="game.finalScore">최종 점수</span>
+                            <span class="value score-value" id="final-score">0</span>
+                        </div>
+                        <div class="final-stat">
+                            <span class="label" data-i18n="game.bestScore">최고 기록</span>
+                            <span class="value" id="best-score-display">0</span>
+                        </div>
+                    </div>
+
+                    <div class="record-check" id="record-check" style="display:none;">
+                        <p class="record-text" data-i18n="game.newRecord">새로운 기록! 🏆</p>
+                    </div>
+
+                    <div class="game-over-actions">
+                        <button id="play-again-btn" class="btn btn-primary" data-i18n="button.playAgain">다시 시작</button>
+                        <button id="share-btn" class="btn btn-secondary" data-i18n="button.share">공유</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Ad -->
+        <div class="ad-container ad-bottom">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-3600813755953882"
+                data-ad-slot="0987654321"
+                data-ad-format="horizontal"
+                data-full-width-responsive="true"></ins>
+        </div>
+
+        <!-- Recommended Apps Section -->
+        <section class="rec-section">
+            <h3 class="rec-title" data-i18n="recommendations.title">다른 게임도 해보세요</h3>
+            <div class="rec-grid">
+                <a href="https://dopabrain.com/number-puzzle/" class="rec-card">
+                    <span class="rec-icon">🔢</span>
+                    <span class="rec-name">2048 퍼즐</span>
+                </a>
+                <a href="https://dopabrain.com/color-memory/" class="rec-card">
+                    <span class="rec-icon">🎨</span>
+                    <span class="rec-name">색상 기억력</span>
+                </a>
+                <a href="https://dopabrain.com/reaction-test/" class="rec-card">
+                    <span class="rec-icon">⚡</span>
+                    <span class="rec-name">반응속도 테스트</span>
+                </a>
+                <a href="https://dopabrain.com/idle-clicker/" class="rec-card">
+                    <span class="rec-icon">⚔️</span>
+                    <span class="rec-name">던전 클리커</span>
+                </a>
+                <a href="https://dopabrain.com/sky-runner/" class="rec-card">
+                    <span class="rec-icon">✈️</span>
+                    <span class="rec-name">스카이 러너</span>
+                </a>
+                <a href="https://dopabrain.com/stack-tower/" class="rec-card">
+                    <span class="rec-icon">📚</span>
+                    <span class="rec-name">스택 타워</span>
+                </a>
+                <a href="https://dopabrain.com/typing-speed/" class="rec-card">
+                    <span class="rec-icon">⌨️</span>
+                    <span class="rec-name">타이핑 속도</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Particle Container -->
+        <div id="particle-container" class="particle-container"></div>
+    </div>
+
+    <!-- Footer with Home Link -->
+    <footer class="game-footer">
+        <a href="https://dopabrain.com/portal/" class="back-link" data-i18n="game.back" aria-label="Go back to DopaBrain home">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+            DopaBrain 홈
+        </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8GSWM40TV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-J8GSWM40TV');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3600813755953882"
+     crossorigin="anonymous"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(err => {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

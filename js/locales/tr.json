@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "Hafıza Kartı Çevirme",
+    "loading": "Yükleniyor...",
+    "description": "Klasik hafıza oyunu - kartları çevirerek eşleştirin"
+  },
+  "game": {
+    "welcome": "Hafıza Kartı Çevirme'ye Hoşgeldiniz!",
+    "welcomeDesc": "Kartları çevirerek çiftleri eşleştirin. Kombo yaparak daha fazla puan kazanın!",
+    "selectTheme": "Tema Seçin",
+    "selectDifficulty": "Zorluk Seçin",
+    "easy": "Kolay (4x3)",
+    "normal": "Normal (4x4)",
+    "hard": "Zor (5x4)",
+    "stage": "Seviye",
+    "score": "Puan",
+    "combo": "Kombo",
+    "time": "Zaman",
+    "attempts": "Denemeler",
+    "stageNumber": "Seviye",
+    "stageClear": "Seviye Tamamlandı!",
+    "timeBonus": "Zaman Bonusu",
+    "comboBonus": "Kombo Bonusu",
+    "totalScore": "Toplam Puan",
+    "paused": "Duraklatıldı",
+    "gameOver": "Oyun Bitti!",
+    "stagesCleared": "Tamamlanan Seviyeler",
+    "finalScore": "Son Puan",
+    "bestScore": "En Yüksek Puan",
+    "newRecord": "Yeni Rekor!",
+    "back": "DopaBrain Ana Sayfa"
+  },
+  "theme": {
+    "emoji": "Emoji",
+    "animal": "Hayvan",
+    "fruit": "Meyve",
+    "flag": "Bayrak"
+  },
+  "button": {
+    "start": "Oyunu Başlat",
+    "resume": "Devam Et",
+    "quit": "Çık",
+    "nextStage": "Sonraki Seviye",
+    "playAgain": "Tekrar Oyna",
+    "share": "Paylaş"
+  },
+  "recommendations": {
+    "title": "Diğer Oyunları Deneyin"
+  },
+  "notifications": {
+    "newCombo": "Kombo! Devam et!",
+    "stageCleared": "Seviye tamamlandı!",
+    "gamePaused": "Oyun duraklatıldı",
+    "gameResumed": "Oyun devam ettirme"
+  }
+}

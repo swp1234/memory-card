@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "Memory Card Flip",
+    "loading": "Loading...",
+    "description": "Classic memory game - flip cards to match pairs"
+  },
+  "game": {
+    "welcome": "Welcome to Memory Card Flip!",
+    "welcomeDesc": "Flip cards to match pairs. Build combos for more points!",
+    "selectTheme": "Select Theme",
+    "selectDifficulty": "Select Difficulty",
+    "easy": "Easy (4x3)",
+    "normal": "Normal (4x4)",
+    "hard": "Hard (5x4)",
+    "stage": "Stage",
+    "score": "Score",
+    "combo": "Combo",
+    "time": "Time",
+    "attempts": "Attempts",
+    "stageNumber": "Stage",
+    "stageClear": "Stage Clear!",
+    "timeBonus": "Time Bonus",
+    "comboBonus": "Combo Bonus",
+    "totalScore": "Total Score",
+    "paused": "Paused",
+    "gameOver": "Game Over!",
+    "stagesCleared": "Stages Cleared",
+    "finalScore": "Final Score",
+    "bestScore": "Best Score",
+    "newRecord": "New Record!",
+    "back": "DopaBrain Home"
+  },
+  "theme": {
+    "emoji": "Emoji",
+    "animal": "Animal",
+    "fruit": "Fruit",
+    "flag": "Flag"
+  },
+  "button": {
+    "start": "Start Game",
+    "resume": "Resume",
+    "quit": "Quit",
+    "nextStage": "Next Stage",
+    "playAgain": "Play Again",
+    "share": "Share"
+  },
+  "recommendations": {
+    "title": "Try Other Games"
+  },
+  "notifications": {
+    "newCombo": "Combo! Keep it going!",
+    "stageCleared": "Stage cleared!",
+    "gamePaused": "Game paused",
+    "gameResumed": "Game resumed"
+  }
+}

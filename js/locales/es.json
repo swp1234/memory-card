@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "Volteador de Tarjetas de Memoria",
+    "loading": "Cargando...",
+    "description": "Juego clásico de memoria - voltea tarjetas para emparejar"
+  },
+  "game": {
+    "welcome": "¡Bienvenido a Volteador de Tarjetas de Memoria!",
+    "welcomeDesc": "Voltea las tarjetas para emparejar. ¡Construye combos para más puntos!",
+    "selectTheme": "Selecciona Tema",
+    "selectDifficulty": "Selecciona Dificultad",
+    "easy": "Fácil (4x3)",
+    "normal": "Normal (4x4)",
+    "hard": "Difícil (5x4)",
+    "stage": "Nivel",
+    "score": "Puntuación",
+    "combo": "Combo",
+    "time": "Tiempo",
+    "attempts": "Intentos",
+    "stageNumber": "Nivel",
+    "stageClear": "¡Nivel Completado!",
+    "timeBonus": "Bonificación de Tiempo",
+    "comboBonus": "Bonificación de Combo",
+    "totalScore": "Puntuación Total",
+    "paused": "Pausado",
+    "gameOver": "¡Juego Terminado!",
+    "stagesCleared": "Niveles Completados",
+    "finalScore": "Puntuación Final",
+    "bestScore": "Mejor Puntuación",
+    "newRecord": "¡Nuevo Récord!",
+    "back": "Inicio de DopaBrain"
+  },
+  "theme": {
+    "emoji": "Emoji",
+    "animal": "Animal",
+    "fruit": "Fruta",
+    "flag": "Bandera"
+  },
+  "button": {
+    "start": "Iniciar Juego",
+    "resume": "Reanudar",
+    "quit": "Salir",
+    "nextStage": "Siguiente Nivel",
+    "playAgain": "Jugar de Nuevo",
+    "share": "Compartir"
+  },
+  "recommendations": {
+    "title": "Prueba Otros Juegos"
+  },
+  "notifications": {
+    "newCombo": "¡Combo! ¡Sigue adelante!",
+    "stageCleared": "¡Nivel completado!",
+    "gamePaused": "Juego pausado",
+    "gameResumed": "Juego reanudado"
+  }
+}

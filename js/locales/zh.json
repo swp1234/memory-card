@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "记忆卡片翻转",
+    "loading": "加载中...",
+    "description": "经典记忆游戏 - 翻转卡片匹配对子"
+  },
+  "game": {
+    "welcome": "欢迎来到记忆卡片翻转!",
+    "welcomeDesc": "翻转卡片来匹配对子。积累连击获得更多分数!",
+    "selectTheme": "选择主题",
+    "selectDifficulty": "选择难度",
+    "easy": "简单 (4x3)",
+    "normal": "普通 (4x4)",
+    "hard": "困难 (5x4)",
+    "stage": "关卡",
+    "score": "分数",
+    "combo": "连击",
+    "time": "时间",
+    "attempts": "尝试",
+    "stageNumber": "关卡",
+    "stageClear": "关卡完成!",
+    "timeBonus": "时间奖励",
+    "comboBonus": "连击奖励",
+    "totalScore": "总分数",
+    "paused": "已暂停",
+    "gameOver": "游戏结束!",
+    "stagesCleared": "完成的关卡",
+    "finalScore": "最终分数",
+    "bestScore": "最高分数",
+    "newRecord": "新纪录!",
+    "back": "DopaBrain 首页"
+  },
+  "theme": {
+    "emoji": "表情",
+    "animal": "动物",
+    "fruit": "水果",
+    "flag": "国旗"
+  },
+  "button": {
+    "start": "开始游戏",
+    "resume": "继续",
+    "quit": "退出",
+    "nextStage": "下一关",
+    "playAgain": "再玩一次",
+    "share": "分享"
+  },
+  "recommendations": {
+    "title": "试试其他游戏"
+  },
+  "notifications": {
+    "newCombo": "连击!继续加油!",
+    "stageCleared": "关卡完成!",
+    "gamePaused": "游戏已暂停",
+    "gameResumed": "游戏已继续"
+  }
+}

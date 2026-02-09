@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "मेमोरी कार्ड फ्लिप",
+    "loading": "लोड हो रहा है...",
+    "description": "क्लासिक मेमोरी गेम - कार्ड को फ्लिप करके जोड़े मिलाएं"
+  },
+  "game": {
+    "welcome": "मेमोरी कार्ड फ्लिप में आपका स्वागत है!",
+    "welcomeDesc": "कार्ड को फ्लिप करके जोड़े मिलाएं। कॉम्बो के लिए अधिक अंक प्राप्त करें!",
+    "selectTheme": "विषय चुनें",
+    "selectDifficulty": "कठिनाई चुनें",
+    "easy": "आसान (4x3)",
+    "normal": "सामान्य (4x4)",
+    "hard": "कठिन (5x4)",
+    "stage": "स्तर",
+    "score": "स्कोर",
+    "combo": "कॉम्बो",
+    "time": "समय",
+    "attempts": "प्रयास",
+    "stageNumber": "स्तर",
+    "stageClear": "स्तर पूरा हुआ!",
+    "timeBonus": "समय बोनस",
+    "comboBonus": "कॉम्बो बोनस",
+    "totalScore": "कुल स्कोर",
+    "paused": "रोका गया",
+    "gameOver": "गेम खत्म!",
+    "stagesCleared": "पूरे किए गए स्तर",
+    "finalScore": "अंतिम स्कोर",
+    "bestScore": "सर्वोत्तम स्कोर",
+    "newRecord": "नया रिकॉर्ड!",
+    "back": "DopaBrain होम"
+  },
+  "theme": {
+    "emoji": "इमोजी",
+    "animal": "जानवर",
+    "fruit": "फल",
+    "flag": "झंडा"
+  },
+  "button": {
+    "start": "गेम शुरू करें",
+    "resume": "जारी रखें",
+    "quit": "बाहर निकलें",
+    "nextStage": "अगला स्तर",
+    "playAgain": "फिर से खेलें",
+    "share": "साझा करें"
+  },
+  "recommendations": {
+    "title": "अन्य गेम आजमाएं"
+  },
+  "notifications": {
+    "newCombo": "कॉम्बो! इसे जारी रखें!",
+    "stageCleared": "स्तर पूरा हुआ!",
+    "gamePaused": "गेम रोका गया",
+    "gameResumed": "गेम जारी रहा"
+  }
+}

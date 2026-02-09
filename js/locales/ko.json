@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "메모리 카드 플립",
+    "loading": "로딩 중...",
+    "description": "카드를 뒤집어서 짝을 맞추는 클래식 기억 게임"
+  },
+  "game": {
+    "welcome": "메모리 카드 플립에 오신 것을 환영합니다!",
+    "welcomeDesc": "카드를 뒤집어서 짝을 맞추세요. 콤보를 쌓을수록 더 많은 점수를 얻습니다!",
+    "selectTheme": "테마 선택",
+    "selectDifficulty": "난이도 선택",
+    "easy": "쉬움 (4x3)",
+    "normal": "보통 (4x4)",
+    "hard": "어려움 (5x4)",
+    "stage": "스테이지",
+    "score": "점수",
+    "combo": "콤보",
+    "time": "시간",
+    "attempts": "시도",
+    "stageNumber": "스테이지",
+    "stageClear": "스테이지 클리어!",
+    "timeBonus": "시간 보너스",
+    "comboBonus": "콤보 보너스",
+    "totalScore": "총 점수",
+    "paused": "일시 정지",
+    "gameOver": "게임 오버!",
+    "stagesCleared": "클리어한 스테이지",
+    "finalScore": "최종 점수",
+    "bestScore": "최고 기록",
+    "newRecord": "새로운 기록!",
+    "back": "DopaBrain 홈"
+  },
+  "theme": {
+    "emoji": "이모지",
+    "animal": "동물",
+    "fruit": "과일",
+    "flag": "국기"
+  },
+  "button": {
+    "start": "게임 시작",
+    "resume": "계속하기",
+    "quit": "나가기",
+    "nextStage": "다음 스테이지",
+    "playAgain": "다시 시작",
+    "share": "공유"
+  },
+  "recommendations": {
+    "title": "다른 게임도 해보세요"
+  },
+  "notifications": {
+    "newCombo": "콤보! 계속 이어가세요!",
+    "stageCleared": "스테이지를 클리어했습니다!",
+    "gamePaused": "게임이 일시 정지되었습니다",
+    "gameResumed": "게임을 재개했습니다"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "Speicherkarte Flip",
+    "loading": "Wird geladen...",
+    "description": "Klassisches Gedächtnisspiel - Karten umdrehen um Paare zu finden"
+  },
+  "game": {
+    "welcome": "Willkommen zum Speicherkarte Flip!",
+    "welcomeDesc": "Drehen Sie die Karten um um Paare zu finden. Bauen Sie Combos für mehr Punkte auf!",
+    "selectTheme": "Design auswählen",
+    "selectDifficulty": "Schwierigkeit auswählen",
+    "easy": "Leicht (4x3)",
+    "normal": "Normal (4x4)",
+    "hard": "Schwer (5x4)",
+    "stage": "Level",
+    "score": "Punkte",
+    "combo": "Combo",
+    "time": "Zeit",
+    "attempts": "Versuche",
+    "stageNumber": "Level",
+    "stageClear": "Level geschafft!",
+    "timeBonus": "Zeitbonus",
+    "comboBonus": "Combo-Bonus",
+    "totalScore": "Gesamtpunkte",
+    "paused": "Pausiert",
+    "gameOver": "Spiel vorbei!",
+    "stagesCleared": "Abgeschlossene Level",
+    "finalScore": "Endergebnis",
+    "bestScore": "Beste Punktzahl",
+    "newRecord": "Neuer Rekord!",
+    "back": "DopaBrain Startseite"
+  },
+  "theme": {
+    "emoji": "Emoji",
+    "animal": "Tier",
+    "fruit": "Obst",
+    "flag": "Flagge"
+  },
+  "button": {
+    "start": "Spiel starten",
+    "resume": "Fortsetzen",
+    "quit": "Beenden",
+    "nextStage": "Nächstes Level",
+    "playAgain": "Nochmal spielen",
+    "share": "Teilen"
+  },
+  "recommendations": {
+    "title": "Andere Spiele ausprobieren"
+  },
+  "notifications": {
+    "newCombo": "Combo! Weitermachen!",
+    "stageCleared": "Level geschafft!",
+    "gamePaused": "Spiel pausiert",
+    "gameResumed": "Spiel fortgesetzt"
+  }
+}

@@ -1,0 +1,29 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e67e22;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d35400;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" fill="url(#grad512)" rx="120"/>
+
+  <!-- Card 1 (Top Left) -->
+  <rect x="80" y="80" width="160" height="190" fill="#ffffff" rx="20" opacity="0.9"/>
+  <text x="160" y="175" font-size="120" text-anchor="middle" dominant-baseline="middle">🎴</text>
+
+  <!-- Card 2 (Top Right) -->
+  <rect x="272" y="80" width="160" height="190" fill="#ffffff" rx="20" opacity="0.85"/>
+  <text x="352" y="175" font-size="120" text-anchor="middle" dominant-baseline="middle">🎴</text>
+
+  <!-- Card 3 (Bottom Left) -->
+  <rect x="80" y="292" width="160" height="190" fill="#ffffff" rx="20" opacity="0.8"/>
+  <text x="160" y="387" font-size="120" text-anchor="middle" dominant-baseline="middle">🎴</text>
+
+  <!-- Card 4 (Bottom Right) -->
+  <rect x="272" y="292" width="160" height="190" fill="#ffd700" rx="20" opacity="0.95"/>
+  <text x="352" y="387" font-size="120" text-anchor="middle" dominant-baseline="middle">⭐</text>
+
+  <!-- Shine Effect -->
+  <circle cx="256" cy="120" r="100" fill="white" opacity="0.15"/>
+</svg>

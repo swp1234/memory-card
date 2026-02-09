@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "Flip de Cartes Mémoire",
+    "loading": "Chargement...",
+    "description": "Jeu de mémoire classique - retournez les cartes pour former des paires"
+  },
+  "game": {
+    "welcome": "Bienvenue dans Flip de Cartes Mémoire!",
+    "welcomeDesc": "Retournez les cartes pour former des paires. Construisez des combos pour plus de points!",
+    "selectTheme": "Choisir un thème",
+    "selectDifficulty": "Choisir la difficulté",
+    "easy": "Facile (4x3)",
+    "normal": "Normal (4x4)",
+    "hard": "Difficile (5x4)",
+    "stage": "Niveau",
+    "score": "Score",
+    "combo": "Combo",
+    "time": "Temps",
+    "attempts": "Tentatives",
+    "stageNumber": "Niveau",
+    "stageClear": "Niveau complété!",
+    "timeBonus": "Bonus de temps",
+    "comboBonus": "Bonus de combo",
+    "totalScore": "Score total",
+    "paused": "Pause",
+    "gameOver": "Jeu terminé!",
+    "stagesCleared": "Niveaux complétés",
+    "finalScore": "Score final",
+    "bestScore": "Meilleur score",
+    "newRecord": "Nouveau record!",
+    "back": "Accueil DopaBrain"
+  },
+  "theme": {
+    "emoji": "Emoji",
+    "animal": "Animal",
+    "fruit": "Fruit",
+    "flag": "Drapeau"
+  },
+  "button": {
+    "start": "Commencer le jeu",
+    "resume": "Reprendre",
+    "quit": "Quitter",
+    "nextStage": "Niveau suivant",
+    "playAgain": "Rejouer",
+    "share": "Partager"
+  },
+  "recommendations": {
+    "title": "Essayez d'autres jeux"
+  },
+  "notifications": {
+    "newCombo": "Combo! Continuez!",
+    "stageCleared": "Niveau complété!",
+    "gamePaused": "Jeu en pause",
+    "gameResumed": "Jeu repris"
+  }
+}
