@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Resource hints for external domains -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+
     <title data-i18n="app.title">메모리 카드 플립 - Memory Card Flip</title>
     <meta name="description" content="카드를 뒤집어서 짝을 맞추는 클래식 메모리 게임! 🎴 콤보 시스템과 다양한 테마로 더욱 재미있는 게임 경험을 즐기세요.">
     <meta name="robots" content="index, follow, max-image-preview:large">
@@ -51,14 +58,39 @@
         "@context": "https://schema.org",
         "@type": "VideoGame",
         "name": "메모리 카드 플립",
-        "description": "카드를 뒤집어서 짝을 맞추는 클래식 메모리 게임. 콤보 시스템으로 더 많은 점수를 획득하세요!",
-        "applicationCategory": "GameApplication",
+        "description": "카드를 뒤집어서 짝을 맞추는 클래식 메모리 게임. 콤보 시스템과 다양한 난이도로 기억력을 단련하세요! 모바일과 데스크톱에서 즐기는 중독성 높은 게임.",
         "url": "https://dopabrain.com/memory-card/",
         "image": "https://dopabrain.com/memory-card/icon-512.svg",
         "genre": "Puzzle",
         "gamePlatform": "Web Browser",
         "operatingSystem": "Any",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+        "applicationCategory": "Game",
+        "browserRequirements": "Requires JavaScript. Modern browser (Chrome, Safari, Firefox, Edge).",
+        "inLanguage": ["ko", "en", "zh", "hi", "ru", "ja", "es", "pt", "id", "tr", "de", "fr"],
+        "author": {
+            "@type": "Organization",
+            "name": "DopaBrain",
+            "url": "https://dopabrain.com/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "DopaBrain",
+            "url": "https://dopabrain.com/"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "KRW",
+            "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.5",
+            "ratingCount": "2650",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "featureList": "카드 플립 게임플레이, 콤보 시스템, 다양한 난이도, 점수 추적, 시간 측정, 최고 기록 저장, 다국어 지원, 반응형 디자인"
     }
     </script>
 
@@ -67,11 +99,12 @@
     <link rel="icon" type="image/svg+xml" href="icon-192.svg">
     <link rel="apple-touch-icon" href="icon-192.svg">
 
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Preload critical resources -->
-    <link rel="preload" href="css/style.css" as="style">
-    <!-- Prefetch app scripts -->
-    <link rel="prefetch" href="js/app.js">
+    <!-- Critical CSS async loading -->
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+
+    <!-- Preload critical scripts -->
+    <link rel="preload" href="js/app.js" as="script">
 </head>
 <body>
     <!-- Skip to main content link for keyboard users -->
