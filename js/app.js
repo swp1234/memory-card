@@ -171,7 +171,18 @@ class MemoryCardGame {
     }
 
     generateCards() {
-        const config = this.gridConfigs[this.selectedDifficulty];
+        // Improved difficulty curve: keep early stages consistent, increase later
+        let config = this.gridConfigs[this.selectedDifficulty];
+
+        // Override difficulty progression: same grid for first 5 stages
+        if (this.currentStage <= 5) {
+            config = this.gridConfigs['easy']; // Always use easy config (3x4) for first 5 stages
+        } else if (this.currentStage <= 10) {
+            config = this.gridConfigs['normal']; // Use normal (4x4) for stages 6-10
+        } else {
+            config = this.gridConfigs['hard']; // Use hard (5x4) for stages 11+
+        }
+
         const totalCards = config.rows * config.cols;
         const pairCount = totalCards / 2;
 
