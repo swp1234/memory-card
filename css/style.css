@@ -1158,3 +1158,149 @@ body {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* === Keyboard Focus Accessibility === */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+[role="button"]:focus-visible,
+[role="link"]:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 2px;
+}
+
+/* Remove default outline only if custom one provided */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid #9b59b6;
+    outline-offset: 2px;
+}
+
+/* Tab key only focus style */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+input:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+    button, input, a[href], [role="button"] {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Enhanced button accessibility */
+button:focus-visible,
+input[type="button"]:focus-visible,
+input[type="submit"]:focus-visible,
+[role="button"]:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 2px;
+}
+
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active,
+[role="button"]:active {
+    transform: scale(0.98);
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+    button,
+    input[type="button"],
+    input[type="submit"],
+    [role="button"] {
+        border: 2px solid currentColor;
+        font-weight: bold;
+    }
+}
+
+/* Enhanced form accessibility */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+    font-size: 16px;
+    min-height: 44px;
+    padding: 10px 12px;
+}
+
+input[type="text"]:focus-visible,
+input[type="email"]:focus-visible,
+input[type="password"]:focus-visible,
+input[type="number"]:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
+}
+
+/* Error handling accessibility */
+.error-message,
+[aria-invalid="true"] {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+[aria-invalid="true"] {
+    border-color: #dc2626;
+}
+
+/* Non-color focus indicators */
+:focus-visible {
+    outline-width: 3px;
+}
+
+/* Icon patterns for colorblind users */
+.error::before {
+    content: "x ";
+}
+
+.success::before {
+    content: "✓ ";
+}
+
+.warning::before {
+    content: "! ";
+}
+
+.info::before {
+    content: "i ";
+}
+
+/* High contrast scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark, #f1f5f9);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color, #3b82f6);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark, #1e40af);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-color: var(--primary-color, #3b82f6) var(--bg-dark, #f1f5f9);
+    scrollbar-width: thin;
+}
