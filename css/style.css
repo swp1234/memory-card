@@ -85,6 +85,7 @@ body {
 .loader-emoji {
     font-size: 60px;
     animation: loader-bounce 1s ease-in-out infinite;
+    will-change: transform;
 }
 
 .loader-spinner {
@@ -94,6 +95,7 @@ body {
     border-top-color: var(--primary-color);
     border-radius: 50%;
     animation: loader-spin 0.8s linear infinite;
+    will-change: transform;
 }
 
 .loader-text {
