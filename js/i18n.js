@@ -114,6 +114,10 @@ const i18n = new I18n();
 
 // Auto-initialize on document ready
 document.addEventListener('DOMContentLoaded', async () => {
-    await i18n.loadTranslations(i18n.currentLang);
-    i18n.updateUI();
+    try {
+        await i18n.loadTranslations(i18n.currentLang);
+        i18n.updateUI();
+    } catch (e) {
+        console.warn('i18n init failed:', e);
+    }
 });
