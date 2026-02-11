@@ -462,17 +462,19 @@ class MemoryCardGame {
     }
 
     shareScore() {
-        const text = `메모리 카드 플립에서 ${this.score}점을 얻었습니다! 🎴\n${this.currentStage - 1}개의 스테이지를 클리어했어요!\n\n지금 바로 도전해보세요: https://dopabrain.com/memory-card/`;
+        const title = (window.i18n && i18n.t) ? i18n.t('app.title') || 'Memory Card Flip' : 'Memory Card Flip';
+        const shareMsg = (window.i18n && i18n.t) ? i18n.t('share.text') : null;
+        const copiedMsg = (window.i18n && i18n.t) ? i18n.t('share.copied') || 'Copied to clipboard!' : 'Copied to clipboard!';
+
+        const text = shareMsg
+            ? shareMsg.replace('{score}', this.score).replace('{stages}', this.currentStage - 1)
+            : `Memory Card Flip: ${this.score} points! Cleared ${this.currentStage - 1} stages!\n\nhttps://dopabrain.com/memory-card/`;
 
         if (navigator.share) {
-            navigator.share({
-                title: '메모리 카드 플립',
-                text: text
-            }).catch(err => console.log('Error sharing:', err));
+            navigator.share({ title, text }).catch(err => console.log('Error sharing:', err));
         } else {
-            // Fallback: Copy to clipboard
             navigator.clipboard.writeText(text).then(() => {
-                alert('공유 내용이 클립보드에 복사되었습니다!');
+                alert(copiedMsg);
             });
         }
     }
