@@ -171,6 +171,7 @@ class MemoryCardGame {
     }
 
     startGame() {
+        if(typeof gtag!=='undefined') gtag('event','game_start');
         this.gameState = 'playing';
         this.currentStage = 1;
         this.score = 0;
@@ -403,6 +404,7 @@ class MemoryCardGame {
     }
 
     quitGame() {
+        if(typeof gtag!=='undefined') gtag('event','game_over',{score:this.score});
         this.gameState = 'gameOver';
         clearInterval(this.timer);
 
