@@ -171,7 +171,10 @@ class MemoryCardGame {
     }
 
     startGame() {
-        if(typeof gtag!=='undefined') gtag('event','game_start');
+        if (typeof gtag === 'function') {
+            gtag('event', 'game_start');
+            gtag('event', 'engagement', { event_category: 'memory_card', event_label: 'first_interaction' });
+        }
         this.gameState = 'playing';
         this.currentStage = 1;
         this.score = 0;
@@ -651,6 +654,20 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// GA4 engagement tracking (scroll + timer)
+(function() {
+    let scrollFired = false;
+    window.addEventListener('scroll', function() {
+        if (!scrollFired && window.scrollY > 100) {
+            scrollFired = true;
+            if (typeof gtag === 'function') gtag('event', 'scroll_engagement', { engagement_type: 'scroll' });
+        }
+    }, { passive: true });
+    setTimeout(function() {
+        if (typeof gtag === 'function') gtag('event', 'timer_engagement', { engagement_time_msec: 5000 });
+    }, 5000);
+})();
 
 // Initialize game when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
