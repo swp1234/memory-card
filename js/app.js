@@ -460,6 +460,23 @@ class MemoryCardGame {
             this.displayLeaderboard(leaderboardResult);
 
             this.showScreen('game-over-screen');
+
+            // Rewarded ad — watch ad for 2x score
+            if (typeof GameAds !== 'undefined') {
+                GameAds.injectRewardButton({
+                    container: '#game-over-screen',
+                    label: 'Watch Ad for 2x Score',
+                    onReward: () => {
+                        this.score *= 2;
+                        document.getElementById('final-score').textContent = this.score;
+                        if (this.score > this.bestScore) {
+                            this.bestScore = this.score;
+                            localStorage.setItem('memoryCardBestScore', this.bestScore);
+                            document.getElementById('best-score-display').textContent = this.bestScore;
+                        }
+                    }
+                });
+            }
         };
 
         if (typeof GameAds !== 'undefined') {
@@ -502,6 +519,7 @@ class MemoryCardGame {
     }
 
     restart() {
+        if (typeof GameAds !== 'undefined') GameAds.removeRewardButton('#game-over-screen');
         this.startGame();
     }
 
