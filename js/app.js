@@ -64,6 +64,9 @@ class MemoryCardGame {
         this.attachEventListeners();
         this.hideAppLoader();
         this.updateBestScore();
+
+        // Restore previous session if one exists
+        this.loadGameState();
     }
 
     cacheDOM() {
@@ -171,6 +174,7 @@ class MemoryCardGame {
     }
 
     startGame() {
+        this.clearGameState();
         if (typeof gtag === 'function') {
             gtag('event', 'game_start');
             gtag('event', 'engagement', { event_category: 'memory_card', event_label: 'first_interaction' });
@@ -308,6 +312,7 @@ class MemoryCardGame {
 
                 this.canFlip = true;
                 this.updateDisplay();
+                this.saveGameState();
             } else {
                 this.playSound('error');
                 if (typeof Haptic !== 'undefined') Haptic.medium();
@@ -327,6 +332,7 @@ class MemoryCardGame {
                 this.flipped = [];
                 this.canFlip = true;
                 this.updateDisplay();
+                this.saveGameState();
             }
         }, this.flipped.length === 2 ? 800 : 0);
     }
@@ -335,6 +341,7 @@ class MemoryCardGame {
         this.gameState = 'stageClear';
         this.canFlip = false;
         clearInterval(this.timer);
+        this.clearGameState();
         this.playSound('clear');
 
         const timeBonus = Math.max(0, 300 - this.time) * 10;
@@ -369,6 +376,7 @@ class MemoryCardGame {
         this.showScreen('game-screen');
         this.generateCards();
         this.startTimer();
+        this.saveGameState();
     }
 
     togglePause() {
@@ -410,6 +418,7 @@ class MemoryCardGame {
     }
 
     quitGame() {
+        this.clearGameState();
         if(typeof gtag!=='undefined') gtag('event','game_over',{score:this.score});
         if (typeof Haptic !== 'undefined') Haptic.heavy();
         this.gameState = 'gameOver';
@@ -567,6 +576,80 @@ class MemoryCardGame {
         } else if (soundType === 'resume') {
             window.sfx.resume();
         }
+    }
+
+    // --- Save / Load / Clear game state for session persistence ---
+
+    saveGameState() {
+        if (this.gameState !== 'playing') return;
+        const state = {
+            cards: this.cards,
+            matched: this.matched,
+            score: this.score,
+            combo: this.combo,
+            maxCombo: this.maxCombo,
+            time: this.time,
+            attempts: this.attempts,
+            currentStage: this.currentStage,
+            selectedTheme: this.selectedTheme,
+            selectedDifficulty: this.selectedDifficulty
+        };
+        try {
+            localStorage.setItem('memoryCard_gameState', JSON.stringify(state));
+        } catch (e) { /* storage full — ignore */ }
+    }
+
+    loadGameState() {
+        let raw;
+        try { raw = localStorage.getItem('memoryCard_gameState'); } catch (e) { return false; }
+        if (!raw) return false;
+
+        let state;
+        try { state = JSON.parse(raw); } catch (e) { this.clearGameState(); return false; }
+
+        // Restore game variables
+        this.cards = state.cards;
+        this.matched = state.matched || [];
+        this.score = state.score || 0;
+        this.combo = state.combo || 0;
+        this.maxCombo = state.maxCombo || 0;
+        this.time = state.time || 0;
+        this.attempts = state.attempts || 0;
+        this.currentStage = state.currentStage || 1;
+        this.selectedTheme = state.selectedTheme || 'emoji';
+        this.selectedDifficulty = state.selectedDifficulty || 'easy';
+
+        this.flipped = [];
+        this.canFlip = true;
+        this.gameState = 'playing';
+
+        // Determine grid config from restored state
+        let config;
+        if (this.currentStage <= 8) {
+            config = this.gridConfigs['easy'];
+        } else if (this.currentStage <= 15) {
+            config = this.gridConfigs['normal'];
+        } else {
+            config = this.gridConfigs['hard'];
+        }
+
+        // Render board and reveal matched cards
+        this.showScreen('game-screen');
+        this.renderCards(config);
+
+        document.querySelectorAll('.memory-card').forEach(el => {
+            const idx = parseInt(el.dataset.index);
+            if (this.matched.includes(idx)) {
+                el.classList.add('flipped', 'matched');
+            }
+        });
+
+        this.startTimer();
+        return true;
+    }
+
+    clearGameState() {
+        try { localStorage.removeItem('memoryCard_gameState'); } catch (e) { /* ignore */ }
     }
 
     displayLeaderboard(leaderboardResult) {
