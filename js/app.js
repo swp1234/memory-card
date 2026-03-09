@@ -439,26 +439,34 @@ class MemoryCardGame {
         // Report score to daily streak
         if (typeof DailyStreak !== 'undefined') DailyStreak.report(this.score);
 
-        // Show game over screen
-        document.getElementById('final-stages').textContent = stagesCleared;
-        document.getElementById('final-score').textContent = this.score;
-        document.getElementById('best-score-display').textContent = this.bestScore;
+        // Show game over screen (with interstitial ad)
+        const showGameOver = () => {
+            document.getElementById('final-stages').textContent = stagesCleared;
+            document.getElementById('final-score').textContent = this.score;
+            document.getElementById('best-score-display').textContent = this.bestScore;
 
-        // Check for new record
-        const isNewRecord = leaderboardResult.isNewRecord;
-        if (isNewRecord) {
-            document.getElementById('record-check').style.display = 'block';
-            this.bestScore = this.score;
-            localStorage.setItem('memoryCardBestScore', this.bestScore);
-            this.playSound('record');
+            // Check for new record
+            const isNewRecord = leaderboardResult.isNewRecord;
+            if (isNewRecord) {
+                document.getElementById('record-check').style.display = 'block';
+                this.bestScore = this.score;
+                localStorage.setItem('memoryCardBestScore', this.bestScore);
+                this.playSound('record');
+            } else {
+                document.getElementById('record-check').style.display = 'none';
+            }
+
+            // Display leaderboard
+            this.displayLeaderboard(leaderboardResult);
+
+            this.showScreen('game-over-screen');
+        };
+
+        if (typeof GameAds !== 'undefined') {
+            GameAds.showInterstitial({ onComplete: () => { showGameOver(); } });
         } else {
-            document.getElementById('record-check').style.display = 'none';
+            showGameOver();
         }
-
-        // Display leaderboard
-        this.displayLeaderboard(leaderboardResult);
-
-        this.showScreen('game-over-screen');
     }
 
     startTimer() {
@@ -763,4 +771,5 @@ document.head.appendChild(style);
 document.addEventListener('DOMContentLoaded', () => {
     const game = new MemoryCardGame();
     if (typeof DailyStreak !== 'undefined') DailyStreak.init({ gameId: 'memory-card', bestScoreKey: 'memoryCardBestScore', minTarget: 1 });
+    if (typeof GameAds !== 'undefined') GameAds.init();
 });
