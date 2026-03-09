@@ -423,6 +423,9 @@ class MemoryCardGame {
             difficulty: this.selectedDifficulty
         });
 
+        // Report score to daily streak
+        if (typeof DailyStreak !== 'undefined') DailyStreak.report(this.score);
+
         // Show game over screen
         document.getElementById('final-stages').textContent = stagesCleared;
         document.getElementById('final-score').textContent = this.score;
@@ -672,4 +675,5 @@ document.head.appendChild(style);
 // Initialize game when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     const game = new MemoryCardGame();
+    if (typeof DailyStreak !== 'undefined') DailyStreak.init({ gameId: 'memory-card', bestScoreKey: 'memoryCardBestScore', minTarget: 1 });
 });
