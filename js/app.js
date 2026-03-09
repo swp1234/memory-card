@@ -265,6 +265,7 @@ class MemoryCardGame {
 
         // Play flip sound
         this.playSound('flip');
+        if (typeof Haptic !== 'undefined') Haptic.light();
 
         this.flipped.push(index);
         cardEl.classList.add('flipped');
@@ -286,6 +287,7 @@ class MemoryCardGame {
             if (isMatch) {
                 this.matched.push(index1, index2);
                 this.playSound('match');
+                if (typeof Haptic !== 'undefined') Haptic.success();
                 this.createParticles();
 
                 // Increase combo
@@ -308,6 +310,7 @@ class MemoryCardGame {
                 this.updateDisplay();
             } else {
                 this.playSound('error');
+                if (typeof Haptic !== 'undefined') Haptic.medium();
                 this.createShakeAnimation();
 
                 // Reset combo
@@ -408,6 +411,7 @@ class MemoryCardGame {
 
     quitGame() {
         if(typeof gtag!=='undefined') gtag('event','game_over',{score:this.score});
+        if (typeof Haptic !== 'undefined') Haptic.heavy();
         this.gameState = 'gameOver';
         clearInterval(this.timer);
 
