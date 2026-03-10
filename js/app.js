@@ -187,6 +187,7 @@ class MemoryCardGame {
         this.time = 0;
         this.attempts = 0;
         this.canFlip = true;
+        this._newBestShown = false;
 
         this.showScreen('game-screen');
         this.generateCards();
@@ -303,6 +304,22 @@ class MemoryCardGame {
                 const points = basePoints + comboBonus;
                 this.score += points;
 
+                // Floating text at matched card position
+                const card1 = document.querySelector(`.memory-card[data-index="${index1}"]`);
+                if (card1) {
+                    const rect = card1.getBoundingClientRect();
+                    const text = this.combo >= 2 ? `+${points} ${this.combo}x` : `+${points}`;
+                    this.showFloatingText(text, rect.left + rect.width / 2, rect.top, this.combo >= 2 ? '#e74c3c' : '#f39c12');
+                }
+
+                // NEW BEST flash
+                if (this.score > this.bestScore && !this._newBestShown) {
+                    this._newBestShown = true;
+                    this.bestScore = this.score;
+                    localStorage.setItem('memoryCardBestScore', this.bestScore);
+                    this.showNewBestFlash();
+                }
+
                 // Check if stage is complete
                 if (this.matched.length === this.cards.length) {
                     this.stageClear();
@@ -315,7 +332,7 @@ class MemoryCardGame {
             } else {
                 this.playSound('error');
                 if (typeof Haptic !== 'undefined') Haptic.medium();
-                this.createShakeAnimation();
+                this.shakeScreen(2, 4);
 
                 // Reset combo
                 this.combo = 0;
@@ -538,6 +555,41 @@ class MemoryCardGame {
                 alert(copiedMsg);
             });
         }
+    }
+
+    showFloatingText(text, x, y, color = '#f39c12') {
+        const popup = document.createElement('div');
+        popup.textContent = text;
+        popup.style.cssText = 'position:fixed;left:' + x + 'px;top:' + y + 'px;transform:translateX(-50%);font-size:22px;font-weight:800;color:' + color + ';pointer-events:none;z-index:9999;opacity:1;text-shadow:0 0 8px ' + color + '40;transition:all 0.7s ease-out;';
+        document.body.appendChild(popup);
+        requestAnimationFrame(() => {
+            popup.style.top = (y - 50) + 'px';
+            popup.style.opacity = '0';
+        });
+        setTimeout(() => popup.remove(), 800);
+    }
+
+    shakeScreen(intensity = 2, frames = 4) {
+        const duration = frames * (1000 / 60);
+        const px = intensity;
+        this.cardGrid.style.animation = `mc-shake ${Math.max(duration, 200)}ms ease`;
+        setTimeout(() => { this.cardGrid.style.animation = ''; }, Math.max(duration, 200) + 50);
+    }
+
+    showNewBestFlash() {
+        const flash = document.createElement('div');
+        flash.textContent = 'NEW BEST!';
+        flash.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.5);font-size:36px;font-weight:900;color:#FFD700;z-index:9999;pointer-events:none;text-shadow:0 0 20px rgba(255,215,0,0.6),0 2px 4px rgba(0,0,0,0.5);opacity:0;transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);';
+        document.body.appendChild(flash);
+        requestAnimationFrame(() => {
+            flash.style.opacity = '1';
+            flash.style.transform = 'translate(-50%,-50%) scale(1)';
+        });
+        setTimeout(() => {
+            flash.style.opacity = '0';
+            flash.style.transform = 'translate(-50%,-50%) scale(1.2)';
+        }, 1200);
+        setTimeout(() => flash.remove(), 1700);
     }
 
     createParticles() {
@@ -766,6 +818,12 @@ style.textContent = `
         0%, 100% { transform: translateX(0); }
         10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
         20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+    @keyframes mc-shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-2px); }
+        50% { transform: translateX(2px); }
+        75% { transform: translateX(-1px); }
     }
 `;
 document.head.appendChild(style);
