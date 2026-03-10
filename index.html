@@ -80,7 +80,7 @@
         "offers": {
             "@type": "Offer",
             "price": "0",
-            "priceCurrency": "KRW",
+            "priceCurrency": "USD",
             "availability": "https://schema.org/InStock"
         },
         "aggregateRating": {
@@ -451,6 +451,17 @@
         document.getElementById('shareTwitterBtn')?.addEventListener('click',function(){var t=document.title+' '+window.location.href;window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(t),'_blank');if(typeof gtag!=='undefined')gtag('event','share',{method:'twitter'})});
         document.getElementById('shareUrlBtn')?.addEventListener('click',function(){var b=this;navigator.clipboard.writeText(window.location.href).then(function(){b.textContent='✅ Copied!';setTimeout(function(){b.innerHTML='📋 Copy URL'},2000)});if(typeof gtag!=='undefined')gtag('event','share',{method:'url_copy'})});
     </script>
+        <!-- Related Games (SEO Internal Links) -->
+    <section class="related-games" style="margin:20px auto;padding:16px;max-width:480px;background:rgba(255,255,255,0.05);border-radius:12px;">
+      <p style="font-size:13px;color:#aaa;margin:0 0 8px 0;font-weight:600;">More Free Games</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="/color-memory/" style="padding:6px 12px;background:rgba(255,255,255,0.08);border-radius:8px;text-decoration:none;color:inherit;font-size:13px;">🎨 Color Memory</a>
+        <a href="/reaction-test/" style="padding:6px 12px;background:rgba(255,255,255,0.08);border-radius:8px;text-decoration:none;color:inherit;font-size:13px;">⚡ Reaction Test</a>
+        <a href="/minesweeper/" style="padding:6px 12px;background:rgba(255,255,255,0.08);border-radius:8px;text-decoration:none;color:inherit;font-size:13px;">💣 Minesweeper</a>
+        <a href="/number-puzzle/" style="padding:6px 12px;background:rgba(255,255,255,0.08);border-radius:8px;text-decoration:none;color:inherit;font-size:13px;">🔢 Number Puzzle</a>
+        <a href="/block-puzzle/" style="padding:6px 12px;background:rgba(255,255,255,0.08);border-radius:8px;text-decoration:none;color:inherit;font-size:13px;">🧩 Block Puzzle</a>
+      </div>
+    </section>
     <script src="/portal/js/cross-promo.js" defer></script>
 </body>
 </html>
