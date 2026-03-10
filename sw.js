@@ -1,9 +1,10 @@
-const CACHE_NAME = 'memory-card-v1';
+const CACHE_NAME = 'memory-card-v2';
 const urlsToCache = [
   './',
   './index.html',
   './manifest.json',
   './css/style.css',
+  './assets/card-back-opt.png',
   './js/app.js',
   './js/i18n.js',
   './js/locales/ko.json',
