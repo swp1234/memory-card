@@ -597,6 +597,10 @@ body {
 
 .card-back {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    background-image: url('../assets/card-back-opt.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     box-shadow: 0 4px 12px rgba(230, 126, 34, 0.2);
     overflow: hidden;
 }
@@ -1354,6 +1358,7 @@ select:focus-visible {
     --dark-border: #e0e0e8;
     --light-text: #1a1a2e;
     --muted-text: #5a5a70;
+    --text: #1a1a2e;
 }
 
 [data-theme="light"] body {

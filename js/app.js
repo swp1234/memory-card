@@ -247,7 +247,6 @@ class MemoryCardGame {
             card.innerHTML = `
                 <div class="card-inner">
                     <div class="card-face card-back">
-                        <span class="card-back-icon">🎴</span>
                     </div>
                     <div class="card-face card-front">
                         <span class="card-content">${content}</span>
