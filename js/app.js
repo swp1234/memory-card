@@ -456,6 +456,16 @@ class MemoryCardGame {
         // Report score to daily streak
         if (typeof DailyStreak !== 'undefined') DailyStreak.report(this.score);
 
+        // Report achievements
+        if (typeof GameAchievements !== 'undefined') {
+            const totalGames = this.leaderboard.getAllScores().length;
+            GameAchievements.report({
+                bestScore: this.bestScore,
+                totalGames: totalGames,
+                bestStreak: 0
+            });
+        }
+
         // Show game over screen (with interstitial ad)
         const showGameOver = () => {
             document.getElementById('final-stages').textContent = stagesCleared;
@@ -865,4 +875,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const game = new MemoryCardGame();
     if (typeof DailyStreak !== 'undefined') DailyStreak.init({ gameId: 'memory-card', bestScoreKey: 'memoryCardBestScore', minTarget: 1 });
     if (typeof GameAds !== 'undefined') GameAds.init();
+    if (typeof GameAchievements !== 'undefined') GameAchievements.init({
+        gameId: 'memory-card',
+        defs: [
+            { id: 'score_500', stat: 'bestScore', target: 500, icon: '⭐', name: 'Memory Star' },
+            { id: 'score_2000', stat: 'bestScore', target: 2000, icon: '🏆', name: 'Memory Master' },
+            { id: 'score_5000', stat: 'bestScore', target: 5000, icon: '👑', name: 'Memory Legend' },
+            { id: 'games_10', stat: 'totalGames', target: 10, icon: '🎮', name: 'Regular Player' },
+            { id: 'games_50', stat: 'totalGames', target: 50, icon: '🔥', name: 'Dedicated' },
+            { id: 'streak_5', stat: 'bestStreak', target: 5, icon: '💥', name: 'Match Streak' }
+        ]
+    });
 });
