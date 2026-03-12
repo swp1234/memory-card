@@ -47,6 +47,10 @@ class MemoryCardGame {
             flag: ['🇰🇷', '🇺🇸', '🇯🇵', '🇨🇳', '🇮🇳', '🇧🇷', '🇩🇪', '🇫🇷', '🇬🇧', '🇮🇹', '🇪🇸', '🇷🇺']
         };
 
+        // Lives
+        this.lives = 3;
+        this.maxLives = 3;
+
         // Cards State
         this.cards = [];
         this.flipped = [];
@@ -84,6 +88,7 @@ class MemoryCardGame {
         this.comboDisplay = document.getElementById('combo-display');
         this.timerDisplay = document.getElementById('timer-display');
         this.attemptsDisplay = document.getElementById('attempts-display');
+        this.livesDisplay = document.getElementById('lives-display');
 
         // Language
         this.langToggle = document.getElementById('lang-toggle');
@@ -186,6 +191,7 @@ class MemoryCardGame {
         this.maxCombo = 0;
         this.time = 0;
         this.attempts = 0;
+        this.lives = this.maxLives;
         this.canFlip = true;
         this._newBestShown = false;
 
@@ -334,6 +340,18 @@ class MemoryCardGame {
                 if (typeof Haptic !== 'undefined') Haptic.medium();
                 this.shakeScreen(2, 4);
 
+                // Lose a life
+                this.lives--;
+
+                // Show floating "-1" feedback near the lives display
+                this.showLifeLostFeedback();
+
+                // Shake the lives display
+                if (this.livesDisplay) {
+                    this.livesDisplay.classList.add('shake');
+                    setTimeout(() => this.livesDisplay.classList.remove('shake'), 400);
+                }
+
                 // Reset combo
                 this.combo = 0;
 
@@ -346,9 +364,16 @@ class MemoryCardGame {
                 });
 
                 this.flipped = [];
-                this.canFlip = true;
                 this.updateDisplay();
-                this.saveGameState();
+
+                // Check for game over (0 lives)
+                if (this.lives <= 0) {
+                    this.canFlip = false;
+                    setTimeout(() => this.quitGame(), 600);
+                } else {
+                    this.canFlip = true;
+                    this.saveGameState();
+                }
             }
         }, this.flipped.length === 2 ? 800 : 0);
     }
@@ -526,6 +551,14 @@ class MemoryCardGame {
         this.comboDisplay.textContent = this.combo;
         this.timerDisplay.textContent = this.formatTime(this.time);
         this.attemptsDisplay.textContent = this.attempts;
+        this.updateLivesDisplay();
+    }
+
+    updateLivesDisplay() {
+        if (!this.livesDisplay) return;
+        const full = '\u2764\uFE0F'.repeat(this.lives);
+        const empty = '\uD83E\uDE76'.repeat(this.maxLives - this.lives);
+        this.livesDisplay.textContent = full + empty;
     }
 
     updateBestScore() {
@@ -572,6 +605,25 @@ class MemoryCardGame {
         const popup = document.createElement('div');
         popup.textContent = text;
         popup.style.cssText = 'position:fixed;left:' + x + 'px;top:' + y + 'px;transform:translateX(-50%);font-size:22px;font-weight:800;color:' + color + ';pointer-events:none;z-index:9999;opacity:1;text-shadow:0 0 8px ' + color + '40;transition:all 0.7s ease-out;';
+        document.body.appendChild(popup);
+        requestAnimationFrame(() => {
+            popup.style.top = (y - 50) + 'px';
+            popup.style.opacity = '0';
+        });
+        setTimeout(() => popup.remove(), 800);
+    }
+
+    showLifeLostFeedback() {
+        if (!this.livesDisplay) return;
+        const rect = this.livesDisplay.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        const popup = document.createElement('div');
+        popup.className = 'lives-lost-feedback';
+        popup.textContent = '-1 \u2764\uFE0F';
+        popup.style.left = x + 'px';
+        popup.style.top = y + 'px';
+        popup.style.transform = 'translateX(-50%)';
         document.body.appendChild(popup);
         requestAnimationFrame(() => {
             popup.style.top = (y - 50) + 'px';
@@ -678,6 +730,7 @@ class MemoryCardGame {
             maxCombo: this.maxCombo,
             time: this.time,
             attempts: this.attempts,
+            lives: this.lives,
             currentStage: this.currentStage,
             selectedTheme: this.selectedTheme,
             selectedDifficulty: this.selectedDifficulty
@@ -703,6 +756,7 @@ class MemoryCardGame {
         this.maxCombo = state.maxCombo || 0;
         this.time = state.time || 0;
         this.attempts = state.attempts || 0;
+        this.lives = state.lives !== undefined ? state.lives : this.maxLives;
         this.currentStage = state.currentStage || 1;
         this.selectedTheme = state.selectedTheme || 'emoji';
         this.selectedDifficulty = state.selectedDifficulty || 'easy';

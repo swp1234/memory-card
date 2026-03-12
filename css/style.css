@@ -326,6 +326,48 @@ body {
     color: var(--accent-color);
 }
 
+/* Lives Bar */
+.lives-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.lives-display {
+    font-size: 28px;
+    letter-spacing: 4px;
+    transition: transform 0.2s ease;
+    line-height: 1;
+}
+
+.lives-display.shake {
+    animation: lives-shake 0.4s ease;
+}
+
+@keyframes lives-shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+}
+
+.lives-lost-feedback {
+    position: fixed;
+    font-size: 24px;
+    font-weight: 800;
+    color: #e74c3c;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+    transition: all 0.7s ease-out;
+    white-space: nowrap;
+}
+
 /* Game Info Bar */
 .game-info-bar {
     display: grid;
