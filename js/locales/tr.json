@@ -60,5 +60,12 @@
     "audio": "Ses kullanılamıyor. Devam edebilirsiniz.",
     "network": "Bağlantınızı kontrol edip tekrar deneyin.",
     "general": "Bir şeyler ters gitti. Yenileyip tekrar deneyin."
+  },
+  "related": {
+    "title": "Daha fazla keşfet",
+    "colorMemory": "Renk Hafızası",
+    "reactionTest": "Reaksiyon Testi",
+    "numberPuzzle": "Sayı Bulmacası",
+    "mazeRunner": "Labirent"
   }
 }

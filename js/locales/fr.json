@@ -60,5 +60,12 @@
     "audio": "Audio indisponible. Vous pouvez continuer.",
     "network": "Vérifiez votre connexion et réessayez.",
     "general": "Un problème est survenu. Rafraîchissez ou réessayez."
+  },
+  "related": {
+    "title": "Plus à explorer",
+    "colorMemory": "Mémoire des couleurs",
+    "reactionTest": "Test de réaction",
+    "numberPuzzle": "Puzzle numérique",
+    "mazeRunner": "Labyrinthe"
   }
 }

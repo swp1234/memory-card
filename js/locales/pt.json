@@ -60,5 +60,12 @@
     "audio": "Áudio indisponível. Você pode continuar.",
     "network": "Verifique sua conexão e tente novamente.",
     "general": "Algo deu errado. Atualize ou tente novamente."
+  },
+  "related": {
+    "title": "Mais para explorar",
+    "colorMemory": "Memória de cores",
+    "reactionTest": "Teste de reação",
+    "numberPuzzle": "Puzzle numérico",
+    "mazeRunner": "Labirinto"
   }
 }

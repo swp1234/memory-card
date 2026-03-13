@@ -60,5 +60,12 @@
     "audio": "Audio tidak tersedia. Anda dapat melanjutkan.",
     "network": "Periksa koneksi Anda dan coba lagi.",
     "general": "Terjadi kesalahan. Muat ulang atau coba lagi."
+  },
+  "related": {
+    "title": "Jelajahi lebih lanjut",
+    "colorMemory": "Memori Warna",
+    "reactionTest": "Tes Reaksi",
+    "numberPuzzle": "Puzzle Angka",
+    "mazeRunner": "Labirin"
   }
 }
