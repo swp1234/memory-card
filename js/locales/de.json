@@ -28,7 +28,9 @@
     "finalScore": "Endergebnis",
     "bestScore": "Beste Punktzahl",
     "newRecord": "Neuer Rekord!",
-    "back": "DopaBrain Startseite"
+    "back": "DopaBrain Startseite",
+    "perfectBonus": "Perfekt-Bonus",
+    "accuracy": "Genauigkeit"
   },
   "theme": {
     "emoji": "Emoji",

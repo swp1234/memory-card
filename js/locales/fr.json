@@ -28,7 +28,9 @@
     "finalScore": "Score final",
     "bestScore": "Meilleur score",
     "newRecord": "Nouveau record!",
-    "back": "Accueil DopaBrain"
+    "back": "Accueil DopaBrain",
+    "perfectBonus": "Bonus Parfait",
+    "accuracy": "Précision"
   },
   "theme": {
     "emoji": "Emoji",

@@ -28,7 +28,9 @@
     "finalScore": "Son Puan",
     "bestScore": "En Yüksek Puan",
     "newRecord": "Yeni Rekor!",
-    "back": "DopaBrain Ana Sayfa"
+    "back": "DopaBrain Ana Sayfa",
+    "perfectBonus": "Mükemmel Bonus",
+    "accuracy": "Doğruluk"
   },
   "theme": {
     "emoji": "Emoji",

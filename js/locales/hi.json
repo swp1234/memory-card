@@ -28,7 +28,9 @@
     "finalScore": "अंतिम स्कोर",
     "bestScore": "सर्वोत्तम स्कोर",
     "newRecord": "नया रिकॉर्ड!",
-    "back": "DopaBrain होम"
+    "back": "DopaBrain होम",
+    "perfectBonus": "परफेक्ट बोनस",
+    "accuracy": "सटीकता"
   },
   "theme": {
     "emoji": "इमोजी",

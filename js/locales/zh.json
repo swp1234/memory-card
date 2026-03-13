@@ -28,7 +28,9 @@
     "finalScore": "最终分数",
     "bestScore": "最高分数",
     "newRecord": "新纪录!",
-    "back": "DopaBrain 首页"
+    "back": "DopaBrain 首页",
+    "perfectBonus": "完美奖励",
+    "accuracy": "准确率"
   },
   "theme": {
     "emoji": "表情",

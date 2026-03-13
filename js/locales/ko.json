@@ -28,7 +28,9 @@
     "finalScore": "최종 점수",
     "bestScore": "최고 기록",
     "newRecord": "새로운 기록!",
-    "back": "DopaBrain 홈"
+    "back": "DopaBrain 홈",
+    "perfectBonus": "퍼펙트 보너스",
+    "accuracy": "정확도"
   },
   "theme": {
     "emoji": "이모지",

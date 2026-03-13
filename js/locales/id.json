@@ -28,7 +28,9 @@
     "finalScore": "Skor Akhir",
     "bestScore": "Skor Terbaik",
     "newRecord": "Rekor Baru!",
-    "back": "Rumah DopaBrain"
+    "back": "Rumah DopaBrain",
+    "perfectBonus": "Bonus Sempurna",
+    "accuracy": "Akurasi"
   },
   "theme": {
     "emoji": "Emoji",

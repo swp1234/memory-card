@@ -28,7 +28,9 @@
     "finalScore": "最終スコア",
     "bestScore": "ベストスコア",
     "newRecord": "新記録!",
-    "back": "DopaBrain ホーム"
+    "back": "DopaBrain ホーム",
+    "perfectBonus": "パーフェクトボーナス",
+    "accuracy": "正確率"
   },
   "theme": {
     "emoji": "絵文字",

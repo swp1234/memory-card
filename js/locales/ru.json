@@ -28,7 +28,9 @@
     "finalScore": "Финальный результат",
     "bestScore": "Лучший результат",
     "newRecord": "Новый рекорд!",
-    "back": "Дом DopaBrain"
+    "back": "Дом DopaBrain",
+    "perfectBonus": "Идеальный бонус",
+    "accuracy": "Точность"
   },
   "theme": {
     "emoji": "Эмодзи",

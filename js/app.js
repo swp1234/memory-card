@@ -386,21 +386,42 @@ class MemoryCardGame {
         this.playSound('clear');
         spawnConfetti();
 
+        const totalPairs = this.cards.length / 2;
+        const isPerfect = this.attempts === totalPairs; // no mistakes
         const timeBonus = Math.max(0, 300 - this.time) * 10;
         const comboBonus = this.maxCombo * 50;
+        const perfectBonus = isPerfect ? 500 * this.currentStage : 0;
+        const accuracy = Math.round((totalPairs / this.attempts) * 100);
 
-        const stageClearScore = this.score + timeBonus + comboBonus;
+        const stageClearScore = this.score + timeBonus + comboBonus + perfectBonus;
+
+        if (isPerfect) {
+            setTimeout(() => spawnConfetti(), 600); // extra confetti for perfect
+        }
 
         setTimeout(() => {
-            this.showStageeClearScreen(stageClearScore, timeBonus, comboBonus);
+            this.showStageeClearScreen(stageClearScore, timeBonus, comboBonus, perfectBonus, accuracy);
         }, 500);
     }
 
-    showStageeClearScreen(stageClearScore, timeBonus, comboBonus) {
+    showStageeClearScreen(stageClearScore, timeBonus, comboBonus, perfectBonus, accuracy) {
         document.getElementById('clear-stage').textContent = this.currentStage;
         document.getElementById('time-bonus').textContent = '+' + timeBonus;
         document.getElementById('combo-bonus').textContent = '+' + comboBonus;
         document.getElementById('clear-score').textContent = stageClearScore;
+
+        // Perfect bonus display
+        const perfectEl = document.getElementById('perfect-bonus');
+        if (perfectEl) {
+            perfectEl.textContent = perfectBonus > 0 ? '+' + perfectBonus : '-';
+            perfectEl.style.color = perfectBonus > 0 ? '#fbbf24' : '';
+        }
+        // Accuracy display
+        const accuracyEl = document.getElementById('clear-accuracy');
+        if (accuracyEl) {
+            accuracyEl.textContent = accuracy + '%';
+            accuracyEl.style.color = accuracy === 100 ? '#fbbf24' : '';
+        }
 
         this.showScreen('stage-clear-screen');
     }
