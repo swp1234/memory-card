@@ -17,6 +17,15 @@ if (themeToggle) {
     });
 }
 
+const trackedStages = new Set();
+
+function trackStage(eventName, targetSlug = '') {
+    if (trackedStages.has(eventName)) return;
+    trackedStages.add(eventName);
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', eventName, targetSlug ? { target_slug: targetSlug } : {});
+}
+
 class MemoryCardGame {
     constructor() {
         // Game State
@@ -180,10 +189,7 @@ class MemoryCardGame {
 
     startGame() {
         this.clearGameState();
-        if (typeof gtag === 'function') {
-            gtag('event', 'game_start');
-            gtag('event', 'engagement', { event_category: 'memory_card', event_label: 'first_interaction' });
-        }
+        trackStage('memory_card_start');
         this.gameState = 'playing';
         this.currentStage = 1;
         this.score = 0;
@@ -379,6 +385,7 @@ class MemoryCardGame {
     }
 
     stageClear() {
+        trackStage('memory_card_progress');
         this.gameState = 'stageClear';
         this.canFlip = false;
         clearInterval(this.timer);
@@ -482,7 +489,7 @@ class MemoryCardGame {
 
     quitGame() {
         this.clearGameState();
-        if(typeof gtag!=='undefined') gtag('event','game_over',{score:this.score});
+        trackStage('memory_card_complete');
         if (typeof Haptic !== 'undefined') Haptic.heavy();
         this.gameState = 'gameOver';
         clearInterval(this.timer);
@@ -499,20 +506,7 @@ class MemoryCardGame {
             difficulty: this.selectedDifficulty
         });
 
-        // Report score to daily streak
-        if (typeof DailyStreak !== 'undefined') DailyStreak.report(this.score);
-
-        // Report achievements
-        if (typeof GameAchievements !== 'undefined') {
-            const totalGames = this.leaderboard.getAllScores().length;
-            GameAchievements.report({
-                bestScore: this.bestScore,
-                totalGames: totalGames,
-                bestStreak: 0
-            });
-        }
-
-        // Show game over screen (with interstitial ad)
+        // Show the game-over screen directly.
         const showGameOver = () => {
             document.getElementById('final-stages').textContent = stagesCleared;
             document.getElementById('final-score').textContent = this.score;
@@ -533,30 +527,8 @@ class MemoryCardGame {
             this.displayLeaderboard(leaderboardResult);
 
             this.showScreen('game-over-screen');
-
-            // Rewarded ad — watch ad for 2x score
-            if (typeof GameAds !== 'undefined') {
-                GameAds.injectRewardButton({
-                    container: '#game-over-screen',
-                    label: 'Watch Ad for 2x Score',
-                    onReward: () => {
-                        this.score *= 2;
-                        document.getElementById('final-score').textContent = this.score;
-                        if (this.score > this.bestScore) {
-                            this.bestScore = this.score;
-                            localStorage.setItem('memoryCardBestScore', this.bestScore);
-                            document.getElementById('best-score-display').textContent = this.bestScore;
-                        }
-                    }
-                });
-            }
         };
-
-        if (typeof GameAds !== 'undefined') {
-            GameAds.showInterstitial({ onComplete: () => { showGameOver(); } });
-        } else {
-            showGameOver();
-        }
+        showGameOver();
     }
 
     startTimer() {
@@ -606,25 +578,22 @@ class MemoryCardGame {
     }
 
     restart() {
-        if (typeof GameAds !== 'undefined') GameAds.removeRewardButton('#game-over-screen');
         this.startGame();
     }
 
-    shareScore() {
+    async shareScore() {
         const title = (window.i18n && i18n.t) ? i18n.t('app.title') || 'Memory Card Flip' : 'Memory Card Flip';
-        const shareMsg = (window.i18n && i18n.t) ? i18n.t('share.text') : null;
-        const copiedMsg = (window.i18n && i18n.t) ? i18n.t('share.copied') || 'Copied to clipboard!' : 'Copied to clipboard!';
-
-        const text = shareMsg
-            ? shareMsg.replace('{score}', this.score).replace('{stages}', this.currentStage - 1)
-            : `Memory Card Flip: ${this.score} points! Cleared ${this.currentStage - 1} stages!\n\nhttps://dopabrain.com/memory-card/`;
-
-        if (navigator.share) {
-            navigator.share({ title, text }).catch(err => console.log('Error sharing:', err));
-        } else {
-            navigator.clipboard.writeText(text).then(() => {
-                alert(copiedMsg);
-            });
+        const text = 'I played Memory Card Flip on DopaBrain.';
+        const url = 'https://dopabrain.com/memory-card/';
+        try {
+            if (navigator.share) await navigator.share({ title, text, url });
+            else {
+                await navigator.clipboard.writeText(`${text} ${url}`);
+                alert('Link copied!');
+            }
+            trackStage('memory_card_share');
+        } catch (_) {
+            // Cancellation and clipboard failures are not successful shares.
         }
     }
 
@@ -937,37 +906,15 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// GA4 engagement tracking (scroll + timer)
-(function() {
-    let scrollFired = false;
-    window.addEventListener('scroll', function() {
-        if (!scrollFired && window.scrollY > 100) {
-            scrollFired = true;
-            if (typeof gtag === 'function') gtag('event', 'scroll_engagement', { engagement_type: 'scroll' });
-        }
-    }, { passive: true });
-    setTimeout(function() {
-        if (typeof gtag === 'function') gtag('event', 'timer_engagement', { engagement_time_msec: 5000 });
-    }, 5000);
-})();
-
 // Initialize game when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     try {
-        const game = new MemoryCardGame();
-        if (typeof DailyStreak !== 'undefined') DailyStreak.init({ gameId: 'memory-card', bestScoreKey: 'memoryCardBestScore', minTarget: 1 });
-        if (typeof GameAds !== 'undefined') GameAds.init();
-        if (typeof GameAchievements !== 'undefined') GameAchievements.init({
-            gameId: 'memory-card',
-            defs: [
-                { id: 'score_500', stat: 'bestScore', target: 500, icon: '⭐', name: 'Memory Star' },
-                { id: 'score_2000', stat: 'bestScore', target: 2000, icon: '🏆', name: 'Memory Master' },
-                { id: 'score_5000', stat: 'bestScore', target: 5000, icon: '👑', name: 'Memory Legend' },
-                { id: 'games_10', stat: 'totalGames', target: 10, icon: '🎮', name: 'Regular Player' },
-                { id: 'games_50', stat: 'totalGames', target: 50, icon: '🔥', name: 'Dedicated' },
-                { id: 'streak_5', stat: 'bestStreak', target: 5, icon: '💥', name: 'Match Streak' }
-            ]
+        window.memoryCardGame = new MemoryCardGame();
+        document.addEventListener('click', (event) => {
+            const link = event.target.closest('[data-related-slug]');
+            if (link) trackStage('memory_card_related_click', link.dataset.relatedSlug);
         });
+        trackStage('memory_card_view');
     } catch (e) {
         console.error('Game init error:', e);
         const loader = document.getElementById('app-loader');

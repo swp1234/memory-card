@@ -404,27 +404,6 @@ body {
     font-family: 'Courier New', monospace;
 }
 
-/* === Ad Container === */
-.ad-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 90px;
-    margin: 20px 0;
-    background: rgba(26, 26, 46, 0.5);
-    border-radius: 12px;
-    border: 1px solid var(--dark-border);
-    padding: 8px;
-}
-
-.ad-container.ad-top {
-    animation: slideDown 0.8s ease 0.2s backwards;
-}
-
-.ad-container.ad-bottom {
-    animation: slideUp 0.8s ease backwards;
-}
-
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -957,64 +936,6 @@ body {
     #start-btn { animation: none !important; }
 }
 
-/* === Recommendations Section === */
-.rec-section {
-    margin: 40px 0;
-    padding: 24px;
-    background: rgba(230, 126, 34, 0.05);
-    border-radius: 12px;
-    border: 1px solid rgba(230, 126, 34, 0.1);
-    animation: slideUp 0.8s ease 0.4s backwards;
-}
-
-.rec-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 16px;
-    text-align: center;
-}
-
-.rec-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 12px;
-}
-
-.rec-card {
-    padding: 12px;
-    background: rgba(26, 26, 46, 0.8);
-    border: 1px solid var(--dark-border);
-    border-radius: 10px;
-    text-decoration: none;
-    color: var(--light-text);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.rec-card:hover {
-    background: rgba(230, 126, 34, 0.15);
-    border-color: rgba(230, 126, 34, 0.3);
-    transform: translateY(-4px);
-}
-
-.rec-icon {
-    font-size: 28px;
-    display: block;
-}
-
-.rec-name {
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 1.2;
-}
-
 /* === Particle Container === */
 .particle-container {
     position: fixed;
@@ -1163,7 +1084,7 @@ body {
     .btn {
         padding: 10px 16px;
         font-size: 12px;
-        min-height: 40px;
+        min-height: 44px;
     }
 
     .btn-large {
@@ -1180,24 +1101,6 @@ body {
 
     .btn {
         width: 100%;
-    }
-
-    .rec-section {
-        margin: 30px 0;
-        padding: 16px;
-    }
-
-    .rec-grid {
-        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-        gap: 10px;
-    }
-
-    .rec-icon {
-        font-size: 24px;
-    }
-
-    .rec-name {
-        font-size: 10px;
     }
 
     .pause-content h2,
@@ -1459,15 +1362,6 @@ select:focus-visible {
 
 [data-theme="light"] .card.flipped {
     background: var(--dark-surface-light);
-}
-
-[data-theme="light"] .rec-card {
-    background: rgba(230, 126, 34, 0.05);
-    border-color: rgba(230, 126, 34, 0.15);
-}
-
-[data-theme="light"] .rec-card:hover {
-    background: rgba(230, 126, 34, 0.1);
 }
 
 [data-theme="light"] .game-footer {
