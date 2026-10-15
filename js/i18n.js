@@ -24,6 +24,14 @@ class I18n {
     }
 
     detectLanguage() {
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const urlLang = params.get('lang');
+            if (urlLang && this.supportedLanguages.includes(urlLang)) {
+                return urlLang;
+            }
+        } catch (e) {}
+
         // Try localStorage first
         const saved = localStorage.getItem('preferredLanguage');
         if (saved && this.supportedLanguages.includes(saved)) {
