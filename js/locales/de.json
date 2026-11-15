@@ -2,7 +2,8 @@
   "app": {
     "title": "Speicherkarte Flip",
     "loading": "Wird geladen...",
-    "description": "Klassisches Gedächtnisspiel - Karten umdrehen um Paare zu finden"
+    "description": "Klassisches Gedächtnisspiel - Karten umdrehen um Paare zu finden",
+    "skipLink": "Zum Inhalt"
   },
   "game": {
     "welcome": "Willkommen zum Speicherkarte Flip!",

@@ -589,7 +589,7 @@ class MemoryCardGame {
             if (navigator.share) await navigator.share({ title, text, url });
             else {
                 await navigator.clipboard.writeText(`${text} ${url}`);
-                alert('Link copied!');
+                this.showNotification({ type: 'info', message: 'Link copied!' });
             }
             trackStage('memory_card_share');
         } catch (_) {
@@ -831,13 +831,24 @@ class MemoryCardGame {
         const resetBtn = leaderboardContainer.querySelector('#reset-leaderboard-btn');
         if (resetBtn) {
             resetBtn.addEventListener('click', () => {
-                if (confirm('Are you sure you want to reset all records?')) {
-                    this.leaderboard.resetScores();
-                    this.bestScore = 0;
-                    localStorage.setItem('memoryCardBestScore', '0');
-                    this.displayLeaderboard({ isNewRecord: false, rank: -1, notifications: [] });
-                    alert('Records reset!');
+                if (resetBtn.dataset.confirming !== '1') {
+                    resetBtn.dataset.confirming = '1';
+                    const origText = resetBtn.textContent;
+                    resetBtn.textContent = 'Confirm Reset';
+                    setTimeout(() => {
+                        if (resetBtn.dataset.confirming === '1') {
+                            delete resetBtn.dataset.confirming;
+                            resetBtn.textContent = origText;
+                        }
+                    }, 3000);
+                    return;
                 }
+                delete resetBtn.dataset.confirming;
+                this.leaderboard.resetScores();
+                this.bestScore = 0;
+                localStorage.setItem('memoryCardBestScore', '0');
+                this.displayLeaderboard({ isNewRecord: false, rank: -1, notifications: [] });
+                this.showNotification({ type: 'info', message: 'Records reset!' });
             });
         }
 

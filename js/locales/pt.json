@@ -2,7 +2,8 @@
   "app": {
     "title": "Flip de Cartão de Memória",
     "loading": "Carregando...",
-    "description": "Jogo clássico de memória - vire cartões para combinar pares"
+    "description": "Jogo clássico de memória - vire cartões para combinar pares",
+    "skipLink": "Ir para o conteúdo"
   },
   "game": {
     "welcome": "Bem-vindo ao Flip de Cartão de Memória!",

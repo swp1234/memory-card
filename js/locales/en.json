@@ -2,7 +2,8 @@
   "app": {
     "title": "Memory Card Flip",
     "loading": "Loading...",
-    "description": "Classic memory game - flip cards to match pairs"
+    "description": "Classic memory game - flip cards to match pairs",
+    "skipLink": "Skip to content"
   },
   "game": {
     "welcome": "Welcome to Memory Card Flip!",

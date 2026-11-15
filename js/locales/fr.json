@@ -2,7 +2,8 @@
   "app": {
     "title": "Flip de Cartes Mémoire",
     "loading": "Chargement...",
-    "description": "Jeu de mémoire classique - retournez les cartes pour former des paires"
+    "description": "Jeu de mémoire classique - retournez les cartes pour former des paires",
+    "skipLink": "Aller au contenu"
   },
   "game": {
     "welcome": "Bienvenue dans Flip de Cartes Mémoire!",

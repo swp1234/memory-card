@@ -2,7 +2,8 @@
   "app": {
     "title": "Volteador de Tarjetas de Memoria",
     "loading": "Cargando...",
-    "description": "Juego clásico de memoria - voltea tarjetas para emparejar"
+    "description": "Juego clásico de memoria - voltea tarjetas para emparejar",
+    "skipLink": "Ir al contenido"
   },
   "game": {
     "welcome": "¡Bienvenido a Volteador de Tarjetas de Memoria!",

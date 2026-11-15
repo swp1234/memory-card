@@ -98,7 +98,7 @@ class I18n {
                 if (el.placeholder) {
                     el.setAttribute('placeholder', text);
                 }
-            } else {
+            } else if (!el.querySelector('svg')) {
                 el.textContent = text;
             }
         });
@@ -118,7 +118,7 @@ class I18n {
 }
 
 // Initialize i18n
-const i18n = new I18n();
+const i18n = window.i18n = new I18n();
 
 // Auto-initialize on document ready
 document.addEventListener('DOMContentLoaded', async () => {

@@ -2,7 +2,8 @@
   "app": {
     "title": "Flip Kartu Memori",
     "loading": "Memuat...",
-    "description": "Permainan memori klasik - balikkan kartu untuk mencocokkan pasangan"
+    "description": "Permainan memori klasik - balikkan kartu untuk mencocokkan pasangan",
+    "skipLink": "Lewati ke konten"
   },
   "game": {
     "welcome": "Selamat datang di Flip Kartu Memori!",

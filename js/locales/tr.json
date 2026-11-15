@@ -2,7 +2,8 @@
   "app": {
     "title": "Hafıza Kartı Çevirme",
     "loading": "Yükleniyor...",
-    "description": "Klasik hafıza oyunu - kartları çevirerek eşleştirin"
+    "description": "Klasik hafıza oyunu - kartları çevirerek eşleştirin",
+    "skipLink": "İçeriğe geç"
   },
   "game": {
     "welcome": "Hafıza Kartı Çevirme'ye Hoşgeldiniz!",

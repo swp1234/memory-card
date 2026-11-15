@@ -2,7 +2,8 @@
   "app": {
     "title": "记忆卡片翻转",
     "loading": "加载中...",
-    "description": "经典记忆游戏 - 翻转卡片匹配对子"
+    "description": "经典记忆游戏 - 翻转卡片匹配对子",
+    "skipLink": "跳到内容"
   },
   "game": {
     "welcome": "欢迎来到记忆卡片翻转!",
